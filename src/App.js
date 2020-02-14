@@ -1,48 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BookSearch from "./components/BookSearch";
 import SavedBooks from "./components/SavedBooks";
 import Navbar from "./components/Navbar";
 import Heading from "./components/Heading";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import API from "./utils/API";
 
 function App() {
-  const library = [
-    {
-      id: 1,
-      authors: ["James Wallace", "Jim Erickson"],
-      description:
-        "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-      image: "https://picsum.photos/200",
-      link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-      title: "Hard Drive: Bill Gates and the Making of the Microsoft Empire"
-    },
-    {
-      id: 2,
-      authors: ["Suzanne Collins"],
-      description:
-        "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-      image: "https://picsum.photos/200",
-      link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-      title: "The Hunger Games"
-    }
-  ];
+  const [library, setLibrary] = useState([]);
+  useEffect(() => {
+    API.getSavedBooks().then(res => setLibrary(res.data));
+  }, []);
 
   function handleSave(event) {
     const book = JSON.parse(event.target.getAttribute("data-book"));
-    library.push(book);
+    API.saveBook(book);
     console.log("saved:", book.title);
   }
 
   function handleDelete(event) {
     const book = JSON.parse(event.target.getAttribute("data-book"));
-    const index = () => {
-      for (let i = 0; i < library.length; i++) {
-        if (library[i].title === book.title) return i;
-      }
-    };
-    const i = index();
-    library.splice(i, 1);
-    console.log("deleted", book.title);
+    API.deleteBook(book._id);
+    console.log("deleted", book);
   }
 
   return (

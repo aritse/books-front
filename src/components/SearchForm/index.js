@@ -1,6 +1,11 @@
 import React from "react";
 
 export default function SearchForm() {
+  // const handleFormSubmit = event =>{
+  //   event.preventDefault();
+
+  // }
+
   return (
     <form>
       <div className="form-group">
