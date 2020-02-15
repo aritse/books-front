@@ -8,7 +8,9 @@ export default function Book(props) {
     <div className="Book">
       <div className="btn-group" role="group" aria-label="Basic example">
         <button className="btn btn-secondary">
-          <a href={props.book.link}>View</a>
+          <a target="_blank" rel="noopener noreferrer" href={props.book.link}>
+            View
+          </a>
         </button>
 
         <button className="btn btn-primary" data-book={detail} onClick={event => props.action(event)}>

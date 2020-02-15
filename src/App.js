@@ -14,14 +14,18 @@ function App() {
 
   function handleSave(event) {
     const book = JSON.parse(event.target.getAttribute("data-book"));
-    API.saveBook(book);
+    API.saveBook(book).then(() => {
+      API.getSavedBooks().then(res => setLibrary(res.data));
+    });
     console.log("saved:", book.title);
   }
 
   function handleDelete(event) {
     const book = JSON.parse(event.target.getAttribute("data-book"));
-    API.deleteBook(book._id);
-    console.log("deleted", book);
+    API.deleteBook(book._id).then(() => {
+      API.getSavedBooks().then(res => setLibrary(res.data));
+    });
+    console.log("deleted:", book.title);
   }
 
   return (
