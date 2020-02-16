@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api";
+// const URL = "http://localhost:8080/api";
+const URL = "https://ari-book-search-api.herokuapp.com";
 const GOOGLE = "https://www.googleapis.com/books/v1/volumes?q=";
 
 const API = {
