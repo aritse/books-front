@@ -1,10 +1,5 @@
 .Book {
-  border: 1px solid black;
-}
-
-.Book img {
-}
-
-.Book button {
-  class: "btn btn-primary";
+  border: 1px solid #e9ecef;
+  clear: both;
+  overflow: auto;
 }

@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="https://www.google.com/googlebooks/about/">
+        <a className="navbar-brand font-weight-bolder" href="https://www.google.com/googlebooks/about/">
           Google Books
         </a>
         <ul className="navbar-nav">

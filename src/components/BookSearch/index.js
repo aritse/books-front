@@ -27,7 +27,6 @@ export default function BookSearch(props) {
 
   return (
     <div className="BookSearch">
-      <h3>Book Search</h3>
       <SearchForm searchBook={handleSearch} />
       <SearchResult action={props.action} books={state.result} />
     </div>
