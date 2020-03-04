@@ -11,13 +11,12 @@ export default function BookSearch(props) {
   function handleSearch(searchString) {
     API.searchBook(searchString).then(({ data }) => {
       const books = data.items.map(({ volumeInfo }) => {
-        const vi = {
-          title: volumeInfo.title,
-          authors: volumeInfo.authors,
-          description: volumeInfo.description,
-          image: volumeInfo.imageLinks.thumbnail,
-          link: volumeInfo.infoLink
-        };
+        const vi = {};
+        vi.title = volumeInfo.title;
+        vi.authors = volumeInfo.authors;
+        vi.description = volumeInfo.description || "No description";
+        vi.image = volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/138x200";
+        vi.link = volumeInfo.infoLink;
         return vi;
       });
 
