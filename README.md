@@ -18,6 +18,14 @@ I have created a new React-based Google Books Search app which uses React compon
     - `image` - The Book's thumbnail image as returned from the Google Books API
     - `link` - The Book's information link as returned from the Google Books API
 
+### Search Form
+---
 ![Start Page](ssSearchStart.PNG)
+
+### Search Result
+---
 ![Search for books on Seattle](ssSearchSeattle.PNG)
+
+### Saved Book List
+---
 ![Books on Seattle saved](ssSavedSeattle.PNG)
